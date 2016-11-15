@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PrestadorController extends Controller
 {
@@ -24,7 +25,45 @@ class PrestadorController extends Controller
      */
     public function create()
     {
-        //
+
+        //dd(['prestadores'=>$prestadores]);
+        try {
+
+            //dd($prest);
+            $prestadores = \App\Prestador::all();
+
+
+
+
+            Mail::send('emails.listaprestadores',['prestadores'=> $prestadores],function ($message) use ($prestadores){
+                $message->to('marcelo@mgsistemas.com.br', 'Marcelo Gomes');
+                $message->from('admi@marcelogomes.eti.br','Marcelo');
+                $message->subject('[Teste] Lista de Prestadores');
+            });
+
+            return 'E-mail enviado';
+            /*
+            $from = 'mrc-gomes@uol.com.br';
+            $fromName = 'Marcelo Gomes';
+
+            $dados = [
+                'nome' => 'Marcelo',
+                'email' => 'marcelo@mgsistemas.com.br',
+                'mensagem' => 'Testes',
+            ];
+
+
+            Mail::send('emails.contato', $dados, function($message) use ($fromName, $from){
+                $message->to('marcelo@mgsistemas.com.br');
+                $message->from($from, $fromName);
+                $message->subject('Teste');
+            });
+            */
+
+        } catch (\Exception $e){
+            return $e->getMessage();
+        }
+
     }
 
     /**

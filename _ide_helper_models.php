@@ -10,6 +10,44 @@
 
 namespace App{
 /**
+ * App\Espelho
+ *
+ * @property integer $id
+ * @property integer $prestador_id
+ * @property string $data_emissao
+ * @property integer $servico_id
+ * @property string $cnpj_faturamento
+ * @property string $data_provisionamento
+ * @property float $valor_provisionamento
+ * @property float $desconto
+ * @property string $observacao_desconto
+ * @property string $numero_nf
+ * @property string $numero_pedido_compra
+ * @property string $situacao ENV = Enviado
+ * DVA = Devolvido para análise
+ * PRV = Provisionado
+ * @property string $login
+ * @property string $data_atualizacao
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho wherePrestadorId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereDataEmissao($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereServicoId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereCnpjFaturamento($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereDataProvisionamento($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereValorProvisionamento($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereDesconto($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereObservacaoDesconto($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereNumeroNf($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereNumeroPedidoCompra($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereSituacao($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereLogin($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Espelho whereDataAtualizacao($value)
+ */
+	class Espelho extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\Lancamento
  *
  * @property integer $id
@@ -45,6 +83,7 @@ namespace App{
  * @property integer $espelho_id
  * @property string $login
  * @property string $data_atualizacao
+ * @property-read mixed $data_servico_formatted
  * @method static \Illuminate\Database\Query\Builder|\App\Lancamento whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Lancamento wherePrestadorId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Lancamento whereUsuarioId($value)
@@ -129,6 +168,70 @@ namespace App{
  * @method static \Illuminate\Database\Query\Builder|\App\Prestador whereDataAtualizacao($value)
  */
 	class Prestador extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Servico
+ *
+ * @property integer $id
+ * @property integer $tipo_servico 1 - Localização
+ * 2 - Preservação e Eventos
+ * 3 - Agile
+ * @property string $descricao
+ * @property integer $dia_fechamento
+ * @property string $periodo
+ * @property string $data_limite_nf
+ * @property string $discriminacao_servico
+ * @property string $codigo_interno
+ * @property string $cnpj_faturamento
+ * @property string $nome_empresa_faturamento
+ * @property boolean $reter_iss
+ * @property float $percentual_iss
+ * @property string $observacao
+ * @property string $situacao
+ * @property string $login
+ * @property string $data_atualizacao
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereTipoServico($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereDescricao($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereDiaFechamento($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico wherePeriodo($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereDataLimiteNf($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereDiscriminacaoServico($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereCodigoInterno($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereCnpjFaturamento($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereNomeEmpresaFaturamento($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereReterIss($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico wherePercentualIss($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereObservacao($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereSituacao($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereLogin($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Servico whereDataAtualizacao($value)
+ */
+	class Servico extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\ServicoResponsavel
+ *
+ * @property integer $id
+ * @property integer $servico_id
+ * @property string $nome
+ * @property string $telefone
+ * @property string $email
+ * @property string $login
+ * @property string $data_atualizacao
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereServicoId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereNome($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereTelefone($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereLogin($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ServicoResponsavel whereDataAtualizacao($value)
+ */
+	class ServicoResponsavel extends \Eloquent {}
 }
 
 namespace App{
