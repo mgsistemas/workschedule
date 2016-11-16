@@ -61,6 +61,8 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
+            'dump_command_timeout' => 60 * 20, // 5 minute timeout
+            'dump_using_single_transaction' => true,
             'prefix' => '',
             'strict' => true,
             'engine' => null,

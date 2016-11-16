@@ -34,4 +34,22 @@ class Lancamento extends Model
     {
         return isset($this->data_servico) ? (new \DateTime($this->data_servico))->format('d/m/Y H:i:s') : "";
     }
+
+    public static function getDescricaoSituacao($situacao)
+    {
+        $retorno = "Aberto";
+        switch ($situacao){
+            case 'PDP' : $retorno = 'Em Digitação'; break;
+            case 'ENP' : $retorno = 'Enviado'; break;
+            case 'DPP' : $retorno = 'Devolvido'; break;
+            case 'APP' : $retorno = 'Aprovado' ; break;
+            case 'ENF' : $retorno = 'Aguardando lote' ; break;
+            case 'LOT' : $retorno = 'Em Lote' ; break;
+            case 'DPA' : $retorno = 'Devolvido para análise' ; break;
+            case 'PRV' : $retorno = 'Provisionado' ; break;
+            case 'CAN' : $retorno = 'Cancelado' ; break;
+        }
+
+        return $retorno;
+    }
 }
